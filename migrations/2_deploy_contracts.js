@@ -15,10 +15,10 @@ module.exports = function (deployer, network) {
     if (network === 'test' || network === 'soliditycoverage') {
       // do nothing
     } else if (network === 'bsctestnet') {
-      const b = await deployer.deploy(FastswapFactory, process.env.DEPLOYER_ACCOUNT, { from: process.env.DEPLOYER_ACCOUNT });
+      const b = await deployer.deploy(FastswapFactory, process.env.RINKEBY_FACTORY_OWNER, { from: process.env.DEPLOYER_ACCOUNT });
       console.log('b:', await b.INIT_CODE_PAIR_HASH.call());
     } else if (network === 'bsc') {
-      const b = await deployer.deploy(FastswapFactory, process.env.DEPLOYER_ACCOUNT, { from: process.env.DEPLOYER_ACCOUNT });
+      const b = await deployer.deploy(FastswapFactory, process.env.MAINNET_FACTORY_OWNER, { from: process.env.DEPLOYER_ACCOUNT });
       console.log('b:', await b.INIT_CODE_PAIR_HASH.call());
     } else {
       console.error(`Unsupported network: ${network}`);
